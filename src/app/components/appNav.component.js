@@ -19,7 +19,7 @@ export default {
 
       <nav class="navbar navbar-inverse" role="navigation">
           <div class="navbar-header">
-              <a class="navbar-brand">AngularUI Router</a>
+              <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
           </div>
           <ul class="nav navbar-nav">
               <li><a ui-sref="hello" ui-sref-active="active">Hello</a></li>
