@@ -6,46 +6,36 @@ import 'normalize.css';
 
 import AppComponent from './app.component';
 
+
+var app =
 angular.module('appMy', [
   uiRouter,
   Components.name,
   services.name
 ])
-
-.component('appMy', AppComponent);
-//routerApp.config(function($stateProvider, $urlRouterProvider) {
-//  $urlRouterProvider.otherwise('/home');
-//  $stateProvider
-//    // главная, состояние и вид ========================================
-//      .state('home', {
-//        url: '/home',
-//        template: '<h3>hello world!</h3>'
-//
-//      })
-//    // о нас =================================
-//      .state('about', {
-//        // we'll get to this in a bit
-//        url: '/about',
-//        template: '<h3>hello about!</h3>'
-//      });
-//});
-
-angular.module('appMy').config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/hello');
+.component('appMy', AppComponent)
+.config(function($stateProvider) {
+//  $urlRouterProvider.otherwise('/hello');, $urlRouterProvider
   $stateProvider
       .state({
-        name: 'hello',
-        url: '/hello',
-        template: '<h3>hello world!</h3>'
+        name: 'admin',
+        url: '/admin',
+      //  component: 'login'
+        template: '<admin></admin>'
       })
-
       .state({
-        name: 'about',
-        url: '/about',
-        template: '<h3>Its the UI-Router hello world app!</h3>'
+        name: 'home',
+        url: '/home',
+        template: '<home></home>'
+      })
+      .state({
+          name: 'login',
+          url: '/login',
+          template: '<login></login>'
       });
-
 });
+
+console.log(Components);
 
 angular.bootstrap(document.body, ['appMy']);
 

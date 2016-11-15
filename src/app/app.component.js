@@ -40,9 +40,11 @@ export default {
       <section class="appnav">
         <app-nav></app-nav>
       </section>
-
+      <section>
+          <ui-view></ui-view>
+      </section>
       <section class="header">
-        <h1>todos</h1>
+     <!--    <h1>todos</h1>-->
         <header class="header-input">
           <todo-text-input
             placeholder="What needs to get done?"

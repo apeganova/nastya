@@ -18,13 +18,13 @@ export default {
     template: `
 
       <nav class="navbar navbar-inverse" role="navigation">
-          <div class="navbar-header">
-              <a class="navbar-brand" ui-sref="#">AngularUI Router</a>
-          </div>
           <ul class="nav navbar-nav">
-              <li><a ui-sref="hello" ui-sref-active="active">Hello</a></li>
-              <li><a ui-sref="about" ui-sref-active="active">About</a></li>
+              <li><a ui-sref="admin" ui-sref-active="active">Admin</a></li>
+              <li><a ui-sref="home" ui-sref-active="active">Home</a></li>
+              <li><a ui-sref="login" ui-sref-active="active">Login</a></li>
           </ul>
+          <div>Hello</div>
+          <div>Logout</div>
       </nav>
  `,
     controller: appNavController,
