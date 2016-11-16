@@ -1,80 +1,175 @@
-NG6-starter TodoMVC Example
-============================
+# What is this?
+This is a starter kit for `AngularJS 1.5.x` & `ES6` application.
 
-This application is example of how you can write your angular applications using [NG6-starter](https://github.com/AngularClass/NG6-starter) as your starting point. Currently this example provides you:
+# Installation and usage
+## Prerequisites
 
- - Example of small-sized application
- - UI components examples
- - Service example which includes unit tests
- - Unit tests for controllers of UI components
- - Browser-driven end-to-end tests
- 
-But there is still some things that should be done:
+Make sure you have globally installed latest versions of [NodeJS](https://nodejs.org):
+* Node 4+
+* NPM 3+
 
- - Improve test coverage
- 
-If you have some other ideas of how improve this example, or you have questions, please welcome to our [issue tracker](https://github.com/AngularClass/NG6-todomvc-starter/issues).
+Make sure you have globally installed latest versions of such NPM modules:
+* Gulp 4
+* webpack
 
-## Learning AngularJS
+## Install
+Run `npm install` to download all dependencies
 
-Official [AngularJS website](http://angularjs.org/) is good place to start, but it lacks of best practices and not provides you base concepts, which could simplify your life. There is some links that can help you better understand how to write maintainable applications using AngularJS. 
+## Usage - Development
+Run `npm run serve` to start watcher and local server. Follow console messages.
 
- - [Angular Styleguide](https://github.com/johnpapa/angular-styleguide) - This is basically angular best practices. There are some differences for ES2015 but the explanation of these practices remains the same.
- - [Optionated Angular Styleguide](https://github.com/toddmotto/angular-styleguide) - this is an extended version of angular styleguide, which covers additional information relevant to dev teams.
- - [Code Organization in Large AngularJS and JavaScript Applications](http://cliffmeyers.com/blog/2013/4/21/code-organization-angularjs-javascript) - This article explains a directory structure, proposed in angular styleguide with more details and use cases.
- - The Top 5 Mistakes AngularJS Developers Make - This is a great series of posts describing in depth the common mistakes and how to not make them.
-   - [Heavy reliance on $scope (not using controller as) ](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers.html)
-   - [Abusing $watch](http://csharperimage.jeremylikness.com/2014/11/the-top-5-mistakes-angularjs-developers_28.html)
-   - [Overusing $broadcast and $emit](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers.html)
-   - [Hacking the DOM](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers_13.html)
-   - [Failing to Test](http://csharperimage.jeremylikness.com/2014/12/the-top-5-mistakes-angularjs-developers_28.html)
- - [AngularJS: The Bad Parts](http://larseidnes.com/2014/11/05/angularjs-the-bad-parts/) - To not fall into a trap, developers always should know the problems of tools they are using. With this knowledge in mind, you will write more maintainable applications.
- - [You don't always need AngularJS DI in directives](http://michalostruszka.pl/blog/2015/01/18/angular-directives-di/) - This article will help you to make more reusable UI components.
- - [Exploring the Angular 1.5 `.component()` method](https://toddmotto.com/exploring-the-angular-1-5-component-method/)
- - [A Guide To Transclusion in AngularJS](http://teropa.info/blog/2015/06/09/transclusion.html)
-
-*If you have any others helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/AngularClass/NG6-todomvc-starter/issues).*
-
-## Unit testing
-
-The app uses [Karma](http://karma-runner.github.io/0.12/index.html) to run the unit tests, which you can find near the test target (`*.spec.js` files).
-
-## End-to-end testing
-
-The app uses [Protractor](https://github.com/angular/protractor), an end-to-end test framework designed for AngularJS apps, to the end-to-end tests, which you can find in the `e2e` folder.
-
-### Setup development environment for running end-to-end tests
-
-The app uses [Protractor](https://angular.github.io/protractor/#/) from the command line, so first please install it globally:
-
-`npm install -g protractor`
-
-It installs two command line tools, `protractor` and `webdriver-manager`, and you can use the `protractor --version` 
-command to verify the installation.
-
-Next, download the necessary binaries for Selenium Server:
- 
-`webdriver-manager update`
-
-Finally, start Selenium Server:
-
-`webdriver-manager start`
-
-It will start Selenium Server on port 4444.
+In case of error, make sure you have latest version of Gulp installed
 
 
-### Running end-to-end tests
+## Usage - Production
+Run `npm run build` to compile and minify all files. Find them in `/dist` folder.
 
-First, start the Selenium Server, and keep it running:
+# AngularJS 1.x & ES6 & Module bundler (Webpack):
 
-`webdriver-manager start`
+In this section we'll described some specific techniques using the combination
+of `AngularJS 1.x` and `ES6` and `Webpack (or any other module bundler)`
 
-Next, open another command prompt, and start the NG6-starter TodoMVC Example application, and keep it running:
+## Templates
 
-`gulp serve`
+### importing html file and inserting inline
+```js
+import template from './footer.html'
 
-Finally, open yet another command prompt, and execute the end-to-end tests:
+let myComponent = {
+    template: template
+}
+```
 
-`npm run test:e2e`
+in this case template will be paste HTML inline. To make [Webpack][wp] import `html` files we've added a
+[`html-loader`](https://github.com/webpack/html-loader). And here's how Webpack's
+configuration would look like:
+```js
+module: {
+    loaders: [
+        // ...
+        {
+            test: /\.html$/,
+            loader: "html"
+        },
+        // ...
+```
 
-Enjoy the report :)
+---
+
+A recommendation is to use second variant. If you are sure that first variant is not used anywhere then
+you may also remove Gulp's `partials` task in order to get rid of unused templates.
+
+
+## Modules
+### External modules
+
+```js
+import ngAnimate from 'angular-animate'   // variant 1
+import 'angular-ui-router'                // variant 2
+
+angular.module('myApp', [ngAnimate, 'ui.router'])
+```
+
+Using **variant 2** you'll need to know the exact name of the imported module (e.g.`ui.router`)
+to include it as a dependency to your application.
+**variant 1** doesn't need that, you may use a variable here.
+
+**variant 1** is recommended
+
+### Internal modules
+
+`child-module.js`:
+
+```js
+export const childModule = 'childModule';
+
+angular.module(childModule, [])
+```
+
+`parent-module.js`:
+
+```js
+import {childModule} from './child-module';
+
+angular.module('myApp', [ childModule ])
+```
+
+
+## Bootstrap
+
+We will be using [UI Bootstrap][ui.bt] from AngularUI Team.
+This module requires **Bootstrap CSS**. Here're several ways to get it:
+
+#### 1. [bootstrap-loader](https://github.com/shakacode/bootstrap-loader)
+
+This variant seems most legit in combination with Webpack, but current
+version requires Bootstrap's JS files and jQuery. We don't need those since
+we are planning to use **UI Bootstrap**
+
+#### 2. import Bootstrap CSS
+
+This can be the simplest way to get Bootstrap styling:
+
+```js
+import 'bootstrap/dist/css/bootstrap.css' // will get styles directly from node_modules
+```
+
+#### 3. import Bootstrap SASS
+
+This variant is **recommended** and will be used.
+
+Here's a [file](src/assets/bootstrap/_bootstrap.scss) where we import all
+Bootstrap modules separately. This gives us more flexibility like overwriting
+variables or create custom theming based on existing layouts. (e.g. [file](src/assets/bootstrap/_overwrites.scss))
+
+## CSS Modules
+[Link](https://github.com/css-modules/css-modules)
+
+After applying **CSS Modules** all styles will come modularized by default.
+And we don't need it because of several reasons:
+
+* some AngularJS modules come with predefined global styles and modularization
+of which can just disable them
+
+* it's easier to have some styles globally.
+e.g. we don't want to have all Bootstrap's classes as a module, like this:
+
+```html
+<div ng-class="styles['col-md-6']"></div>
+```
+
+but only module specific classes, like this:
+
+```html
+<div class=col-md-6 ng-class="styles.myModuleClass"></div>
+```
+
+To achieve this result we should somehow distinguish style files that should
+be applied globally and modular. Here's how it can be done using **Webpack**:
+```js
+loaders: [
+    ...,
+    // Global styles
+    {
+        test: /\.(css|scss)$/,
+        loaders: ['style','css','sass','postcss']
+    },
+    // CSS modules
+    {
+        test: /\.(mcss)$/, // .module.scss / mod.scss
+        loaders: [
+            'style',
+            'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            'sass','postcss'
+        ]
+    },
+```
+
+## File structure / Component architecture
+
+https://github.com/toddmotto/angular-styleguide
+
+
+
+[wp]: https://webpack.github.io/
+[ui.bt]: https://angular-ui.github.io/bootstrap/

@@ -1,19 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html>
   <head>
+    <base href="/">
     <meta charset="utf-8">
-    <title>TodoMVC based on NG6-starter by @AngularClass</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="description" content="TodoMVC by @Fesor">
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>app</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
   </head>
-  <body ng-strict-di ng-cloak>
-    <app-my>
-      Loading...
-    </app-my>
+
+  <body ng-app="app">
+    <ui-view></ui-view>
   </body>
 </html>
