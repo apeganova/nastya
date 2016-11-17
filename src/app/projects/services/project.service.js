@@ -8,7 +8,7 @@ export default class TechService {
   }
 
   getList() {
-    return this.$http.get('/app/techs/mockData/techs.json').then(({data}) => data);
+  //  return this.$http.get('/app/techs/mockData/techs.json').then(({data}) => data);
   }
 
   getEmployeesList() {
