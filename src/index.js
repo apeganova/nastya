@@ -13,6 +13,8 @@ import commonModule from './app/common';
 import aboutModule from './app/about';
 import dashboardModule from './app/dashboard';
 import techsModule from './app/techs';
+import projectsModule from './app/projects';
+import loginModule from './app/login';
 
 // MAIN COMPONENT
 import main from './app/main/main.component'
@@ -31,15 +33,13 @@ angular
     dashboardModule.name,
     commonModule.name,
     aboutModule.name,
-    techsModule.name
+    techsModule.name,
+    projectsModule.name,
+    loginModule.name
   ])
   .config(routesConfig)
   .config(httpInterceptorConfig)
-  //.config(['$resourceProvider', function($resourceProvider) {
-  //  // Don't strip trailing slashes from calculated URLs
-  //  $resourceProvider.defaults.stripTrailingSlashes = false;
-  //}])
-    .config(['$sceDelegateProvider', function($sceDelegateProvider) {
+  .config(['$sceDelegateProvider', function($sceDelegateProvider) {
       // We must whitelist the JSONP endpoint that we are using to show that we trust it
       $sceDelegateProvider.resourceUrlWhitelist([
         'self',

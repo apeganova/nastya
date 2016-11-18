@@ -14,7 +14,7 @@ export default class TechService {
   getEmployeesList() {
     this.$http({
       method: 'GET',
-      url: this.api_path + '/employees',
+      url: this.api_path + 'employees',
       headers: {
         'api_key': this.api_key
       }
@@ -22,7 +22,7 @@ export default class TechService {
     .then(function successCallback(response) {
       console.log(response);
     }, function errorCallback(response) {
-      console.log(response);
+    //  console.log(response);
     });
 
     this.$http({

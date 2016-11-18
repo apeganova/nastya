@@ -8,10 +8,11 @@ class Ctrl {
   }
 
   $onInit() {
-    this.Project.getList().then(list => this.list = list);
-
-    this.Project.getEmployeesList();
-       // .then(list => {console.log(list)});
+  //  this.Project.getList().then(list => this.list = list);
+    this.Project.getProjectsList().then(list => {
+      this.list = list;
+      console.log(list);
+    });
   }
 }
 

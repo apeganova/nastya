@@ -1,11 +1,11 @@
 import angular from 'angular';
 
 // components
-import techItem from './components/projectItem/projectItem.component';
-import techs from './components/project/project.component';
+import projectItem from './components/projectItem/projectItem.component';
+import projects from './components/projects/projects.component';
 
 // services
-import Tech from './services/project.service'
+import Project from './services/project.service'
 
 
 export default angular

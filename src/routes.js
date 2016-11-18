@@ -29,6 +29,10 @@ function routesConfig($stateProvider, $urlRouterProvider, $locationProvider) {
       url: 'projects',
       component: 'projects'
     })
+    .state('app.login', {
+      url: 'login',
+      component: 'login'
+    })
 
 }
 
