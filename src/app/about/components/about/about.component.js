@@ -1,10 +1,10 @@
 class Ctrl {
   /** @ngInject */
-    constructor(Common) {
+    constructor($scope, User) {
     // DI
-    this.user = Common.user;
-    this.authorized = Common.authorized;
-    console.log(Common.api_path);
+    this.user =  User.user;
+    this.authorized =  User.authorized;
+    console.log(User.user);
   }
 
   $onInit() {

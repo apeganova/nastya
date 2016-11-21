@@ -5,6 +5,8 @@ export default class CommonService {
         this.$http = $http;
         this.api_path = Common.api_path;
         this.api_key = Common.api_key;
+        this.user = Common.user;
+        this.authorized = Common.authorized;
      //   this.text = this.value || '';
 
     }
