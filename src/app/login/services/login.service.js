@@ -1,15 +1,15 @@
 export default class CommonService {
     /** @ngInject */
-    constructor($http) {
+    constructor($http, Common) {
         // DI
         this.$http = $http;
-        this.api_path = '/api';
-        this.api_key = 'Ky4ZdxL%2bt%2fgByyV5p5hH%2fnKNzPhnN8oRxKLQ66Ey%2b%2fA%3d';
+        this.api_path = Common.api_path;
+        this.api_key = Common.api_key;
      //   this.text = this.value || '';
 
     }
 
-    login() {
+    login(credential) {
         let conf = {
             method: 'POST',
             url: this.api_path + "/employees/login",
@@ -17,8 +17,8 @@ export default class CommonService {
                 'api_key': this.api_key
             },
             data: {
-                login: "roger.federer@dataart.com",
-                password: "111111"
+                login: credential.login, //"roger.federer@dataart.com",
+                password: credential.password //"111111"
             }
         };
 

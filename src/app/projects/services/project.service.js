@@ -1,4 +1,4 @@
-export default class TechService {
+export default class ProjectsService {
   /** @ngInject */
   constructor($http, Common) {
     // DI

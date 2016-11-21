@@ -1,25 +1,23 @@
 <form class="form-login">
 
+    <form name="loginForm"
+          ng-submit="vm.login(credentials)"
+        >
 
-    <!--<login-text-input-->
-            <!--on-save="vm.onSave(login)"-->
-    <!--</login-text-input>-->
+        <label for="username">Username:</label>
+        <input type="text" id="username"
+               ng-model="credentials.login">
+        <label for="password">Password:</label>
+        <input type="password" id="password"
+               ng-model="credentials.password">
+        <div ng-show = !vm.authorized>Wrong credential</div>
 
-    <!--<login-text-input-->
-            <!--on-save="vm.onSave(password)"-->
-    <!--</login-text-input>-->
+        <button
+                class="btn btn-success"
+                uib-tooltip="bootstrap ui"
+                ng-click = "vm.btnLoginClick(credentials)"
+                >Login</button>
+    </form>
 
-    <login-text-input>
-            <!--on-save="$ctrl.onSave(login)">-->
-    </login-text-input>
 
-    <login-text-input>
-                       <!--on-save="$ctrl.onSave(password)">-->
-    </login-text-input>
-
-    <button
-            class="btn btn-success"
-            uib-tooltip="bootstrap ui"
-            ng-click = "vm.btnLoginClick()"
-            >Login</button>
 </form>

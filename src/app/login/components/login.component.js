@@ -2,51 +2,33 @@
 
 class Ctrl {
     /** @ngInject */
-        constructor(Login, Common) {
+        constructor(Login, Common, $rootScope) {
         // DI
         this.Login = Login;
         this.user = Common.user;
-     //   this.login = this.login.value || '';
-    //    this.password = this.password.value || '';
+        this.authorized = true;
+        $rootScope.user = this.user;
     }
 
     $onInit() {
-        //  this.Project.getList().then(list => this.list = list);
 
     }
-    btnLoginClick() {
-        console.log("btnLoginClick");
 
-        this.Login.login().then(list => {
+    btnLoginClick(credentials) {
+        this.Login.login(credentials).then(
+        list => {
             this.user = list;
+            this.authorized = true;
             console.log(list);
-            console.log(this.value);
+        },
+        () => {
+            this.authorized = false;
         });
-    }
-    //save() {
-    //    this.onSave({
-    //        task: this.text
-    //    });
-    //
-    //    this.text = '';
-    //}
 
-    //onSave(task) {
-    //    if (!task) return;
-    //}
-    ////save() {
-    //    this.onSave({
-    //        task: this.text
-    //    });
-    //
-    //    this.text = '';
-    //}
-    //
-//    onEscape() {
-        //this.onSave({
-        //    task: this.value
-        //});
- //   }
+        console.log("login");
+        console.log(this.user);
+        console.log(credentials);
+    }
 }
 
 export default {

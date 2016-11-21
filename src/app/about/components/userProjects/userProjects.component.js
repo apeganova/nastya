@@ -1,3 +1,4 @@
-/**
- * Created by apeganova on 21.11.2016.
- */
+export default {
+    template: require('./userProjects.html')
+};
+
