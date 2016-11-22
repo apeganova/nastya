@@ -3,6 +3,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import uiBootstrap from 'angular-ui-bootstrap';
 import uiResource from 'angular-resource';
+import uiCookies from 'angular-cookies';
 
 // CONFIGS
 import routesConfig from './routes';
@@ -27,6 +28,7 @@ angular
     // DEPENDENCIES
     uiRouter,
     uiBootstrap,
+    uiCookies,
     uiResource,
 
     // CUSTOM MODULES

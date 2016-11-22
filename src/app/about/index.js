@@ -4,7 +4,7 @@ import about from './components/about/about.component'
 import userInfo from './components/userInfo/userInfo.component'
 import userSkills from './components/userSkills/userSkills.component'
 import userProjects from './components/userProjects/userProjects.component'
-import User from './services/about.service.js'
+import Employee from './services/about.service.js'
 
 export default angular
   .module('app.about', [])
@@ -12,5 +12,5 @@ export default angular
   .component('userInfo', userInfo)
   .component('userSkills', userSkills)
   .component('userProjects', userProjects)
-  .service('User', User)
+  .service('Employee', Employee)
 ;

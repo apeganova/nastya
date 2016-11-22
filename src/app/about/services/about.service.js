@@ -9,9 +9,10 @@ export default class UserService {
         this.authorized = Common.authorized;
     }
     $onInit() {
-        console.log(this.user);
+
     }
-    getProjectsList() {
+    getList() {
+
         //let conf = {
         //    method: 'GET',
         //    url: this.api_path + "/projects",

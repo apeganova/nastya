@@ -1,19 +1,23 @@
+import './about.scss'
+
 class Ctrl {
   /** @ngInject */
-    constructor($scope, User) {
+    constructor(Employee, Common) {
     // DI
-    this.user =  User.user;
-    this.authorized =  User.authorized;
-    console.log(User.user);
+    //this.Employee = Employee;
+    //this.user = this.Employee.user;
+    //this.authorized =  this.Employee.authorized;
+    this.common = Common;
+    this.authorized = Common.authorized;
+    this.user = this.common.user;
   }
 
   $onInit() {
-    //  this.Project.getList().then(list => this.list = list);
+    console.log(this.common);
     //this.Project.getProjectsList().then(list => {
     //  this.list = list;
     //  console.log(list);
     //});
-    console.log(this.user);
   }
 }
 

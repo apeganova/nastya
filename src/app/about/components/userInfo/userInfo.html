@@ -4,29 +4,30 @@
             >
     </h3>
 
-    <label for="birthday">Birthday:</label>
+    <label class="input-label" for="birthday"><span class="label-title">Birthday:</span>
     <input type="text" id="birthday"
            ng-model="vm.user.Birthday">
-
-    <label for="location">Location:</label>
+    </label>
+    <label class="input-label" for="location"><span class="label-title">Location:</span>
     <input type="text" id="location"
-           ng-model="user.Location">
-
-    <label for="address">Address:</label>
+           ng-model="vm.user.Location">
+    </label>
+    <label class="input-label" for="address"><span class="label-title">Address:</span>
     <input type="text" id="address"
-           ng-model="user.Address">
-
-    <label for="skype">Skype:</label>
+           ng-model="vm.user.Address">
+    </label>
+    <label class="input-label" for="skype"><span class="label-title">Skype:</span>
     <input type="text" id="skype"
-           ng-model="user.Skype">
-
-    <label for="phone">Phone:</label>
+           ng-model="vm.user.Skype">
+    </label>
+    <label class="input-label" for="phone"><span class="label-title">Phone:</span>
     <input type="text" id="phone"
-           ng-model="user.Phone">
+           ng-model="vm.user.Phone">
+    </label>
 
     <button
             class="btn btn-success"
             uib-tooltip="bootstrap ui"
             ng-click = "vm.btnLoginClick(credentials)"
-            >Login</button>
+            >Edit</button>
 </div>

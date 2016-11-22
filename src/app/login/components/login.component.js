@@ -2,30 +2,29 @@
 
 class Ctrl {
     /** @ngInject */
-        constructor(Login) {
+        constructor(Login, Common) {
         // DI
         this.Login = Login;
+        this.common = Common;
+        this.user = this.common.user;
+        this.authorized = this.common.authorized;
     }
 
     $onInit() {
-
     }
 
     btnLoginClick(credentials) {
-        console.log(this.Login.api_path);
-
         this.Login.login(credentials).then(
         list => {
-            this.Login.authorized = true;
-            this.Login.user = list;
-            console.log("login");
-            console.log(this.Login.user);
-            console.log(credentials);
+            this.common.authorized = true;
+            this.common.user = list;
+            this.Login.setLogin(this.common.user.Id);
         },
         () => {
-            this.authorized = false;
+            this.common.authorized = false;
+            this.common.user = {};
+            this.common.logout();
         });
-        console.log(this.Login.user);
     }
 }
 

@@ -1,9 +1,9 @@
 class Ctrl {
     /** @ngInject */
-        constructor(Common, User) {
+        constructor(Common, Employee) {
         // DI
-        //this.user = Common.user;
-        //console.log(this.user);
+        this.common = Common;
+        this.user = this.common.user
     }
 
     $onInit() {

@@ -1,12 +1,15 @@
-export default class CommonService {
+export default class LoginService {
     /** @ngInject */
-    constructor($http, Common) {
+    constructor($http, $cookies, Common, $location) {
         // DI
         this.$http = $http;
         this.api_path = Common.api_path;
         this.api_key = Common.api_key;
-        this.user = Common.user;
-        this.authorized = Common.authorized;
+        this.$cookies = $cookies;
+        this.$location = $location;
+
+    //    this.user = Common.user;
+    //    this.authorized = Common.authorized;
      //   this.text = this.value || '';
 
     }
@@ -25,5 +28,10 @@ export default class CommonService {
         };
 
         return this.$http(conf).then(({data}) => data);
+    }
+
+    setLogin(id) {
+        this.$cookies.put('user', id);
+        this.$location.path('/about');
     }
 }
