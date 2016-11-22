@@ -2,20 +2,23 @@ import './techs.scss'
 
 class Ctrl {
   /** @ngInject */
-  constructor(Tech) {
+  constructor(Tech, $rootScope) {
     // DI
     this.Tech = Tech;
-  }
+    this.$rootScope = $rootScope;
+   }
+
 
   $onInit() {
     this.Tech.getList().then(list => {
       this.list = list;
-      console.log(list);
     });
-
-
     this.Tech.getEmployeesList();
        // .then(list => {console.log(list)});
+
+    this.$rootScope.$on('child', function (event, data) {
+      console.log(data); // 'Some data'
+    })
   }
 }
 

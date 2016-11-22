@@ -1,0 +1,12 @@
+user-skills {
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+  .skill {
+    margin: 4px 0;
+  }
+  .skill-name,
+  .skill-level {
+    width: 10rem;
+  }
+}

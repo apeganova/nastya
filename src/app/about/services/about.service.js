@@ -7,6 +7,7 @@ export default class UserService {
         this.api_key = Common.api_key;
         this.user = Common.user;
         this.authorized = Common.authorized;
+        this.skills = Common.userSkills;
     }
     $onInit() {
 

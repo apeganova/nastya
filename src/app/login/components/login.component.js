@@ -2,12 +2,12 @@
 
 class Ctrl {
     /** @ngInject */
-        constructor(Login, Common) {
+        constructor(Login, Common, $rootScope) {
         // DI
         this.Login = Login;
         this.common = Common;
-        this.user = this.common.user;
-        this.authorized = this.common.authorized;
+        this.credential = true;
+        this.$rootScope = $rootScope;
     }
 
     $onInit() {
@@ -19,12 +19,16 @@ class Ctrl {
             this.common.authorized = true;
             this.common.user = list;
             this.Login.setLogin(this.common.user.Id);
+            this.$rootScope.$emit('changeLogin', this.common.user);
         },
         () => {
             this.common.authorized = false;
+            this.credential = false;
             this.common.user = {};
             this.common.logout();
+            this.$rootScope.$emit('changeLogin', this.common.user);
         });
+
     }
 }
 

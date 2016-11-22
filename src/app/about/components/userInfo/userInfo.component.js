@@ -7,16 +7,14 @@ class Ctrl {
     }
 
     $onInit() {
-        //  this.Project.getList().then(list => this.list = list);
-        //this.Project.getProjectsList().then(list => {
-        //    this.list = list;
-        //    console.log(this.user);
-        //});
     }
 }
 
 export default {
     template: require('./userInfo.html'),
     controller: Ctrl,
-    controllerAs: 'vm'
+    controllerAs: 'vm',
+    bindings: {
+        data: '<'
+    }
 };

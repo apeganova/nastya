@@ -18,6 +18,7 @@
         <li ui-sref-active-eq="active"><a ui-sref=".techs">Technologies</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li ng-show="vm.authorized"><a class=navbar-brand">Hello, <span data="common">{{vm.user.FullName}}</span></a></li>
         <li ui-sref-active-eq="active"><a ui-sref="app.login">Login</a></li>
         <li ui-sref-active-eq="active"><a ui-sref="app.about">About</a></li>
       </ul>
