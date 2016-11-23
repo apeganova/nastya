@@ -10,3 +10,24 @@ user-info {
     display: inline-block;
   }
 }
+
+.project-task-name,
+.project-task-description {
+  display: inline-block;
+  height: 2.5rem;
+  border-bottom: 1px dashed #fefefe;
+  padding-left: 1rem;
+}
+.project-task-name {
+  width: 10rem;
+}
+.user-projects {
+  width: 90%
+}
+.project-name {
+  height: 2.5rem;
+  line-height: 2.5rem;
+  background: #fefefe;
+  font-size: 110%;
+  padding-left: 1rem;
+}

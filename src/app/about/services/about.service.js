@@ -6,13 +6,19 @@ export default class UserService {
         this.api_path = Common.api_path;
         this.api_key = Common.api_key;
         this.user = Common.user;
-        this.authorized = Common.authorized;
+        this.isAuthorized = Common.isAuthorized;
         this.skills = Common.userSkills;
     }
     $onInit() {
 
     }
-    getList() {
+    getTasks(user) {
+        console.log(user);
+        let tasks;
+        for (var i = 0; i < user.Projects.length; i++ ) {
+            console.log(user.Projects[i].Tickets);
+        }
+
 
         //let conf = {
         //    method: 'GET',

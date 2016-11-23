@@ -7,11 +7,6 @@ export default class LoginService {
         this.api_key = Common.api_key;
         this.$cookies = $cookies;
         this.$location = $location;
-
-    //    this.user = Common.user;
-    //    this.authorized = Common.authorized;
-     //   this.text = this.value || '';
-
     }
 
     login(credential) {
@@ -22,16 +17,14 @@ export default class LoginService {
                 'api_key': this.api_key
             },
             data: {
-                login: credential.login, //"roger.federer@dataart.com",
-                password: credential.password //"111111"
+                login: credential.login,
+                password: credential.password
             }
         };
-
         return this.$http(conf).then(({data}) => data);
     }
 
     setLogin(id) {
         this.$cookies.put('user', id);
-        this.$location.path('/about');
     }
 }

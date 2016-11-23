@@ -7,18 +7,19 @@ export default class CommonService {
         this.api_key = 'Ky4ZdxL%2bt%2fgByyV5p5hH%2fnKNzPhnN8oRxKLQ66Ey%2b%2fA%3d';
         this.user = {};
         this.userSkills = {};
-        this.authorized = null;
+        this.isAuthorized = false;
         this.$cookies = $cookies;
         this.$location = $location;
     }
+
     getAuthorized() {
         let authorized = this.$cookies.get("user");
 
         if (parseInt(authorized) > 0) {
-            this.authorized = parseInt(authorized);
+            this.isAuthorized = true;
 
         } else {
-            this.authorized = false;
+            this.isAuthorized = false;
             this.$location.path('/login');
         }
         return authorized;
@@ -36,8 +37,12 @@ export default class CommonService {
     }
 
     logout() {
+        console.log("logout");
         this.$cookies.remove("user");
+        this.isAuthorized = false;
+        this.user = {};
     }
+
     getUserSkills(id) {
         let conf = {
             method: 'GET',

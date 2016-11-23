@@ -16,17 +16,13 @@ class Ctrl {
     btnLoginClick(credentials) {
         this.Login.login(credentials).then(
         list => {
-            this.common.authorized = true;
+            this.common.isAuthorized = true;
             this.common.user = list;
             this.Login.setLogin(this.common.user.Id);
             this.$rootScope.$emit('changeLogin', this.common.user);
         },
         () => {
-            this.common.authorized = false;
             this.credential = false;
-            this.common.user = {};
-            this.common.logout();
-            this.$rootScope.$emit('changeLogin', this.common.user);
         });
 
     }

@@ -1,21 +1,23 @@
 <div ng-class="$ctrl.styles.mainContainer">
 
-  <navbar></navbar>
-
-  <div class="container" role="main">
-
-    <div ui-view>
-      <h2>Main</h2>
-      <button
-              class="btn btn-success"
-              uib-tooltip="bootstrap ui"
-              ng-click = "vm.btnSuccessClick()"
-      >Test success btn</button>
-
+    <div ng-if="!vm.isAuthorized">
+        <login></login>
     </div>
 
+    <div ng-if="vm.isAuthorized">
+      <navbar></navbar>
+      <div class="container" role="main">
+        <div ui-view>
+          <h2>Main</h2>
+          <button
+                  class="btn btn-success"
+                  uib-tooltip="bootstrap ui"
+                  ng-click = "vm.btnSuccessClick()"
+          >Test success btn</button>
 
-  </div>
+        </div>
+      </div>
+      <my-footer></my-footer>
+    </div>
 
-  <my-footer></my-footer>
 </div>

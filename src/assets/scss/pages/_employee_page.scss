@@ -1,0 +1,20 @@
+.project-task-name,
+.project-task-description {
+  display: inline-block;
+  height: $project-name-height;
+  border-bottom: 1px dashed #fefefe;
+  padding-left: $_global-offset-1;
+}
+.project-task-name {
+  width: 10rem;
+}
+.user-projects {
+  width: 90%
+}
+.project-name {
+  height: $project-name-height;
+  line-height: $project-name-height;
+  background: #fefefe;
+  font-size: 110%;
+  padding-left: $_global-offset-1;
+}

@@ -1,22 +1,21 @@
-import './userSkills.scss';
-
 class Ctrl {
     /** @ngInject */
         constructor(Common) {
         // DI
         this.common = Common;
         this.user = this.common.user;
-        this.skills = this.common.userSkills;
-   }
+        this.projects = this.common.user.Projects;
+    }
 
     $onInit() {
+
     }
 }
 
 export default {
-    template: require('./userSkills.html'),
+    template: require('./projectTaskItem.html'),
     controller: Ctrl,
-    controllerAs: 'vm',
+    controllerAs: "vm",
     bindings: {
         data: '<'
     }
